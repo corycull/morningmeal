@@ -129,7 +129,8 @@ fun CalculatorScreen(
 
             // Fixed-height slot so the button doesn't jump when this appears.
             Box(Modifier.height(56.dp), contentAlignment = Alignment.Center) {
-                AnimatedVisibility(visible = hasItems, enter = fadeIn(), exit = fadeOut()) {
+                // Fully qualified: inside a Box in a Column, the ColumnScope overload would be picked.
+                androidx.compose.animation.AnimatedVisibility(visible = hasItems, enter = fadeIn(), exit = fadeOut()) {
                     TextButton(onClick = { showSave = true }) {
                         Text("Save to journal", color = MaterialTheme.colorScheme.onSurfaceVariant)
                     }
